@@ -30,25 +30,26 @@ namespace WorldData.Models
     }
     public static List<City> GetAll()
       {
-        List<City> all Cities = new List <Item> {};
+        List<City> allCities = new List<City> {};
         MySqlConnection conn = DB.Connection();
         conn.Open();
         MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
         cmd.CommandText = @"SELECT * FROM items;";
         MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
-        while (rdr.Read()
+        while (rdr.Read())
         {
           string Name = rdr.GetString(1);
-          string Code = rdr.GetCode(2);
-          string District = rdr.GetDistrict(3);
-          allCitites.Add(newCity);
+          string Code = rdr.GetString(2);
+          string District = rdr.GetString(3);
+          City newCity = new City(Name,Code,District);
+          allCities.Add(newCity);
         }
         conn.Close();
         if(conn !=null)
         {
           conn.Dispose();
         }
-        return allCitites;
+        return allCities;
       }
   }
 }

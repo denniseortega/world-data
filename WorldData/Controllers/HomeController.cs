@@ -15,8 +15,8 @@ namespace WorldData.Controllers
     [HttpGet("/Cities")]
     public ActionResult CitiesList()
     {
-      List<City> listOfAllCitites = City.GetAll():
-      return View ("Citites", listOfAllCitites);
+      List<City> listOfAllCitites = City.GetAll();
+      return View ("Cities", listOfAllCitites);
     }
   }
 }
